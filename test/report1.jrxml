@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8b490c1b-6766-4464-92fb-11d764390e77">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     latebill.`MAPHIEU` AS latebill_MAPHIEU,
+     latebill.`MASV` AS latebill_MASV,
+     latebill.`MASACH` AS latebill_MASACH,
+     latebill.`NGAYHENTRA` AS latebill_NGAYHENTRA,
+     latebill.`SONGAYTREHAN` AS latebill_SONGAYTREHAN
+FROM
+     `latebill` latebill]]>
+	</queryString>
+	<field name="latebill_MAPHIEU" class="java.lang.String"/>
+	<field name="latebill_MASV" class="java.lang.String"/>
+	<field name="latebill_MASACH" class="java.lang.String"/>
+	<field name="latebill_NGAYHENTRA" class="java.sql.Date"/>
+	<field name="latebill_SONGAYTREHAN" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="62" y="0" width="436" height="62" uuid="c651576b-7698-44a2-8be7-5785aaaba48f"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Danh sách trễ hạn]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="8e5081e9-944b-416e-8a07-e2b2fa144bf2"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="111" height="15" forecolor="#736343" uuid="67d15d1e-e0a0-4765-ac6c-635357c3acfc"/>
+				<text><![CDATA[Mã Phiếu 		]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="111" y="0" width="111" height="15" forecolor="#736343" uuid="833e40c9-4a53-481e-b842-01c0c3953556"/>
+				<text><![CDATA[Mã Sinh Viên]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="222" y="0" width="73" height="15" forecolor="#736343" uuid="016b899c-3a6d-40a4-b85b-3530d9bb45f6"/>
+				<text><![CDATA[Mã Sách]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="295" y="1" width="111" height="15" forecolor="#736343" uuid="74d6e464-fdf8-48ce-b64b-cc2b0f533c92"/>
+				<text><![CDATA[Ngày Hẹn Trả]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="444" y="0" width="111" height="15" forecolor="#736343" uuid="9d2a9566-b963-4566-9137-6f6e49cf9ffa"/>
+				<text><![CDATA[Số Ngày trễ hẹn]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15" uuid="a5f7f5a1-dff0-4a58-90a6-58e0ef23b1d1"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="111" height="15" uuid="e0ef09b7-4422-4ff8-b47d-6050985761c0"/>
+					<textFieldExpression><![CDATA[$F{latebill_MAPHIEU}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="222" y="0" width="73" height="15" uuid="53570987-1a70-423a-9980-3b4c423a539d"/>
+					<textFieldExpression><![CDATA[$F{latebill_MASACH}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="295" y="0" width="149" height="15" uuid="997a9942-b65c-4077-b3f3-d719ac635916"/>
+					<textFieldExpression><![CDATA[$F{latebill_NGAYHENTRA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="111" y="0" width="111" height="15" uuid="5c4c57a4-f0cc-4f93-9d56-183c41c73dd4"/>
+					<textFieldExpression><![CDATA[$F{latebill_MASV}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="471" y="0" width="54" height="15" uuid="264b5d75-d53f-4cc8-bcfe-2690a1958f2c"/>
+					<textFieldExpression><![CDATA[$F{latebill_SONGAYTREHAN}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="513444ec-db59-414c-b380-e77d410bd097"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="e8936c72-e814-4ee1-9c28-dac0ab359031"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343" uuid="6568d838-5ae1-4bec-b97d-1e3ce21e29b4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343" uuid="18e112cb-7e8e-47f2-8da3-2fe336f40fef"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="f2682b87-6027-4124-bd3f-383302a8ee5a"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
